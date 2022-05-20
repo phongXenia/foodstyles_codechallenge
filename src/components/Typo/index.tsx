@@ -1,6 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import { Text, TextProps } from 'react-native';
 import styleBase from '@app/src/utils/styles/base';
+import { styleColor } from '@app/src/utils/styles/color';
 
 type Props = {
   children?: ReactNode;
@@ -24,7 +25,7 @@ export const Typo: FC<Props & TextProps> = ({
       adjustsFontSizeToFit={adjustsFontSizeToFit}
       selectable={selectable}
       onPress={onPress}
-      style={[styleBase.FontRegular, ...styles]}
+      style={[styleBase.FontRegular, styleColor.textBlack, ...styles]}
       {...props}>
       {children}
     </Text>
