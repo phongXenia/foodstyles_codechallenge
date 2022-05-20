@@ -8,7 +8,7 @@ export const LoginOptionContainer = () => {
   return (
     <View style={[styleBase.container]}>
       <View style={[styleSize.mt_93, styleSize.mx_152]}>
-        <Image source={require('@app/src/assets/images/foodstyleslogo.png')} />
+        <Image source={require('../../../assets/images/foodstyleslogo.png')} />
       </View>
 
       <Typo>Sign in to be able to save your preferences and settings.</Typo>
