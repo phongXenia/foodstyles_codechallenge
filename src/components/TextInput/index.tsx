@@ -7,15 +7,28 @@ import { styleSize } from '@app/src/utils/styles/size';
 import React, { useEffect } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 import {
+  StyleProp,
   StyleSheet,
   TextInput as RNTextInput,
   TextInputProps,
+  TextStyle,
   View,
 } from 'react-native';
 
 const TextInput: React.FC<
-  TextInputProps & { label?: string; name: string; defaultValue?: string }
-> = ({ label, defaultValue = '', name, ...props }) => {
+  TextInputProps & {
+    label?: string;
+    labelStyle?: StyleProp<TextStyle>;
+    name: string;
+    defaultValue?: string;
+  }
+> = ({
+  label,
+  defaultValue = '',
+  name,
+  labelStyle = styles.label,
+  ...props
+}) => {
   const { control } = useFormContext();
   const dispatch = useAppDispatch();
   const {
@@ -35,7 +48,13 @@ const TextInput: React.FC<
     <View style={[styleSize.w100, styleSize.py_7]}>
       {Boolean(label) && (
         <View>
-          <Typo style={[styles.label, styleBase.FontBold, styleSize.mb_7]}>
+          <Typo
+            style={[
+              styles.label,
+              styleBase.FontBold,
+              styleSize.mb_7,
+              labelStyle,
+            ]}>
             {label}
           </Typo>
         </View>
