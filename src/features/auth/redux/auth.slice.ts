@@ -1,5 +1,3 @@
-import { generateErrorMessage } from '@app/src/constants/errorMessage';
-import { AuthActions } from '@app/src/features/auth/redux/auth.action';
 import {
   IAuthState,
   ILoggedInUserPayloadAction,
@@ -7,6 +5,7 @@ import {
 import { RootState } from '@app/src/redux/store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { registerBuilder } from '@app/src/features/auth/redux/builders/register-extra.builder';
+import { loginBuilder } from '@app/src/features/auth/redux/builders/login-extra.builder';
 import { updateProfileExtraBuilder } from '@app/src/features/auth/redux/builders/update-profile-extra.builder';
 
 const initialState: IAuthState = {
@@ -44,24 +43,7 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     registerBuilder(builder);
     updateProfileExtraBuilder(builder);
-
-    builder
-      .addCase(AuthActions.loginWithEmail.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(AuthActions.loginWithEmail.rejected, (state, action) => {
-        state.isLoading = false;
-        state.errorMessage = generateErrorMessage(String(action.payload));
-      })
-      .addCase(AuthActions.loginWithEmail.fulfilled, (state, action) => {
-        state.isLoading = false;
-        if (action.payload) {
-          const { accessToken, refreshToken, user } = action.payload;
-          state.accessToken = accessToken;
-          state.refreshToken = refreshToken;
-          state.user = user;
-        }
-      });
+    loginBuilder(builder);
   },
 });
 
