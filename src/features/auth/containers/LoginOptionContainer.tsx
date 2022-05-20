@@ -8,7 +8,8 @@ import { styleColor } from '@app/src/utils/styles/color';
 
 export const LoginOptionContainer = () => {
   return (
-    <View style={[styleBase.container]}>
+    <View
+      style={[styleBase.container, styleBase.safeTop, styleBase.safeBottom]}>
       <View style={[styleSize.mt_93, styleSize.mx_152]}>
         <Image source={require('@app/src/assets/images/foodstyleslogo.png')} />
       </View>
@@ -42,6 +43,12 @@ export const LoginOptionContainer = () => {
       <View style={[styleBase.center, styleSize.mt_20]}>
         <Typo styles={[styleColor.textWhite, styleSize.text16, styleSize.lh18]}>
           Login with Email
+        </Typo>
+      </View>
+      <View
+        style={[styleBase.container, styleBase.justifyEnd, styleSize.mx_32]}>
+        <Typo styles={[styleBase.textCenter, styleColor.textWhite]}>
+          By signing in you accept the General Terms and Privacy Policy
         </Typo>
       </View>
     </View>
