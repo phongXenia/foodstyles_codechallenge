@@ -13,8 +13,8 @@ export const StackNavigator = () => {
         headerShown: false,
         ...TransitionPresets.SlideFromRightIOS,
       }}>
-      {STACK_SCREENS.map(screen => {
-        return <Stack.Screen {...screen} />;
+      {STACK_SCREENS.map((screen, index) => {
+        return <Stack.Screen key={`STACK_SCREEN_${index}`} {...screen} />;
       })}
     </Stack.Navigator>
   );
