@@ -2,7 +2,7 @@ import {
   ILoginWithEmailActionBody,
   ILogInWithEmailResponse,
 } from '@app/src/features/auth/redux/auth.type';
-import { apolloCLient } from '@app/src/services/apollo';
+import { apolloCLient, ErrorType } from '@app/src/services/apollo';
 import { MUTATION_LOGIN_WITH_EMAIL } from '@app/src/services/apollo/mutation.scheme';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
@@ -19,7 +19,7 @@ export const AuthActions = {
         });
         return response.data?.loginWithEmail;
       } catch (error) {
-        rejectWithValue(error);
+        return rejectWithValue((error as ErrorType)?.message);
       }
     },
   ),
