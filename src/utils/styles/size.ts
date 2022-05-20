@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {sizeHeight, sizeWidth} from '@app/src/utils/helpers/sizing';
 
-const commonSizes: number[] = [];
+const commonSizes: number[] = [14, 93, 152];
 
 export const styleSize: any = StyleSheet.create({
   ...commonSizes.reduce((result, size) => {
