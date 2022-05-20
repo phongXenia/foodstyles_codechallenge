@@ -11,7 +11,7 @@ export enum SCREEN_NAME {
   EDIT_PROFILE = 'EDIT_PROFILE',
 }
 
-export const STACK_SCREENS: ScreenListType[] = [
+export const PUBLIC_STACK_SCREENS: ScreenListType[] = [
   {
     name: SCREEN_NAME.LOGIN_OPTION,
     component: LoginOptionContainer,
@@ -24,5 +24,8 @@ export const STACK_SCREENS: ScreenListType[] = [
     name: SCREEN_NAME.REGISTER,
     component: RegisterContainer,
   },
+];
+
+export const PRIVATE_STACK_SCREENS: ScreenListType[] = [
   { name: SCREEN_NAME.EDIT_PROFILE, component: EditProfileContainer },
 ];

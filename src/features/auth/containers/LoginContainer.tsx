@@ -1,6 +1,6 @@
 import styleBase from '@app/src/utils/styles/base';
 import { COLOR_DEFAULT, styleColor } from '@app/src/utils/styles/color';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { View } from 'react-native';

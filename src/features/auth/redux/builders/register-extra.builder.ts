@@ -10,7 +10,7 @@ export const registerBuilder = (
       state.isLoading = true;
     })
     .addCase(AuthActions.registerWithEmail.rejected, (state, action) => {
-      console.log(action.payload);
+      state.errorMessage = action.payload;
       state.isLoading = false;
     })
     .addCase(AuthActions.registerWithEmail.fulfilled, (state, action) => {

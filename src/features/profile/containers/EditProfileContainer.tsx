@@ -7,6 +7,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useAppSelector } from '@app/src/hooks/reduxCustomHook';
+import TextInput from '@app/src/components/TextInput';
 
 export const EditProfileContainer = () => {
   const user = useAppSelector((state) => state.auth.user);
@@ -27,16 +28,16 @@ export const EditProfileContainer = () => {
   return (
     <View style={[styleBase.container, styleColor.bgWhiteTwo]}>
       <FormProvider {...methods}>
-        <View>
-          <Typo style={[styleBase.FontSemiBold]}>
-            Name shown on your shared cards
-          </Typo>
-        </View>
-        <View>
-          <Typo style={[styleBase.FontSemiBold]}>
-            Name shown on your shared cards
-          </Typo>
-        </View>
+        <TextInput
+          autoCapitalize="none"
+          name="email"
+          label="Name shown on your shared cards"
+        />
+        <TextInput
+          autoCapitalize="none"
+          name="email"
+          label="Name shown on your shared cards"
+        />
       </FormProvider>
     </View>
   );

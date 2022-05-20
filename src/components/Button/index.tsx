@@ -1,21 +1,23 @@
 import { Typo } from '@app/src/components/Typo';
 import styleBase from '@app/src/utils/styles/base';
-import { styleColor } from '@app/src/utils/styles/color';
+import { COLOR_DEFAULT, styleColor } from '@app/src/utils/styles/color';
 import { styleSize } from '@app/src/utils/styles/size';
 import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
+import { StyleProp, ViewStyle, ActivityIndicator } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 type Props = {
   style?: StyleProp<ViewStyle>;
   label: string;
   disabled?: boolean;
+  loading?: boolean;
   onPress?: () => void;
   type?: 'outlined' | 'link' | 'primary';
 };
 const Button: React.FC<Props> = ({
   style,
   label,
+  loading = false,
   disabled = false,
   onPress,
   type = 'primary',
@@ -23,6 +25,7 @@ const Button: React.FC<Props> = ({
   return (
     <TouchableOpacity
       onPress={onPress}
+      disabled={disabled}
       style={[
         type === 'outlined' && styleColor.border,
         styleSize.py_14,
@@ -33,15 +36,19 @@ const Button: React.FC<Props> = ({
         styleBase.center,
         style,
       ]}>
-      <Typo
-        style={[
-          styleBase.FontBold,
-          type === 'outlined'
-            ? styleColor.textThreeWhite
-            : styleColor.textWhite,
-        ]}>
-        {label}
-      </Typo>
+      {loading ? (
+        <ActivityIndicator color={COLOR_DEFAULT.WHITE} />
+      ) : (
+        <Typo
+          style={[
+            styleBase.FontBold,
+            type === 'outlined'
+              ? styleColor.textThreeWhite
+              : styleColor.textWhite,
+          ]}>
+          {label}
+        </Typo>
+      )}
     </TouchableOpacity>
   );
 };

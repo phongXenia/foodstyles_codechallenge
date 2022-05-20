@@ -56,7 +56,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { setLoggedInUser, setIsLoading, setErrorMessage } =
-  authSlice.actions;
+export const { setIsLoading, setErrorMessage } = authSlice.actions;
 export default authSlice.reducer;
 export const authSelector = (state: RootState) => state.auth;
