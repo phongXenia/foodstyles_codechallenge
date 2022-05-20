@@ -23,7 +23,12 @@ export const RegisterContainer = () => {
   const validationSchema = useMemo(() => {
     return yup.object({
       name: yup.string().required('Name is required'),
-      email: yup.string().email('Invalid email').required('Email is required.'),
+      email: yup
+        .string()
+        .email('Invalid email')
+        .required('Email is required.')
+        .lowercase()
+        .trim(),
       password: yup.string().min(6).required('Password is required.'),
     });
   }, []);

@@ -36,7 +36,13 @@ export const LoginOptionButton: FC<Props> = ({
         styleColor.bgWhite,
       ]}>
       {icon && <Image source={icon} style={iconStyle} />}
-      <Typo styles={[styleSize.text16, styleSize.lh18, styleSize.ml_7]}>
+      <Typo
+        styles={[
+          styleSize.text16,
+          styleBase.FontSemiBold,
+          styleSize.lh18,
+          styleSize.ml_9,
+        ]}>
         {title}
       </Typo>
     </TouchableOpacity>

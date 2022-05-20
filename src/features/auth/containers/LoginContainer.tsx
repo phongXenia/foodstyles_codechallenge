@@ -21,7 +21,11 @@ const LoginContainer = () => {
   const schema = useMemo(
     () =>
       yup.object({
-        email: yup.string().required('Email and password is required.'),
+        email: yup
+          .string()
+          .required('Email and password is required.')
+          .lowercase()
+          .trim(),
         password: yup.string().required('Email and password is required.'),
       }),
     [],
@@ -36,7 +40,7 @@ const LoginContainer = () => {
 
   const dispatch = useAppDispatch();
 
-  const { errorMessage } = useAppSelector(authSelector);
+  const { errorMessage, isLoading } = useAppSelector(authSelector);
   const onSubmit = (data: ILoginWithEmailActionBody) => {
     dispatch(AuthActions.loginWithEmail(data));
   };
@@ -75,6 +79,7 @@ const LoginContainer = () => {
                 </View>
               )}
               <Button
+                loading={isLoading}
                 onPress={methods.handleSubmit(onSubmit)}
                 style={[styleSize.mt_14]}
                 label="LOG IN"

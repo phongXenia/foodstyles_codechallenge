@@ -34,6 +34,7 @@ export const LoginOptionContainer = () => {
         <View style={[styleSize.mt_15]}>
           <LoginOptionButton
             icon={require('@app/src/assets/images/appleicon.png')}
+            iconStyle={{ width: 15, height: 18, marginBottom: 4 }}
             onPress={() => {}}
             title="Sign in with Apple"
           />
@@ -41,6 +42,7 @@ export const LoginOptionContainer = () => {
         <View style={[styleSize.mt_15]}>
           <LoginOptionButton
             icon={require('@app/src/assets/images/facebookicon.png')}
+            iconStyle={{ marginBottom: 2 }}
             onPress={() => {}}
             title="Sign in with Facebook"
           />
@@ -65,20 +67,40 @@ export const LoginOptionContainer = () => {
           onPress={() => navigate(SCREEN_NAME.LOGIN)}
           hitSlop={{ bottom: 20, left: 20, right: 20, top: 20 }}>
           <Typo
-            styles={[styleColor.textWhite, styleSize.text16, styleSize.lh18]}>
-            Login with Email
+            styles={[
+              styleColor.textWhite,
+              styleBase.FontSemiBold,
+              styleSize.text16,
+              styleSize.lh18,
+            ]}>
+            Log in with Email
           </Typo>
         </TouchableOpacity>
       </View>
       <View
         style={[styleBase.container, styleBase.justifyEnd, styleSize.mx_32]}>
-        <Typo styles={[styleBase.textCenter, styleColor.textWhite]}>
+        <Typo
+          styles={[
+            styleBase.textCenter,
+            styleColor.textWhite,
+            styleBase.FontSemiBold,
+          ]}>
           By signing in you accept the{' '}
-          <Typo styles={[styleBase.textUnderline, styleColor.textWhite]}>
+          <Typo
+            styles={[
+              styleBase.textUnderline,
+              styleColor.textWhite,
+              styleBase.FontSemiBold,
+            ]}>
             General Terms
           </Typo>{' '}
           and{' '}
-          <Typo styles={[styleBase.textUnderline, styleColor.textWhite]}>
+          <Typo
+            styles={[
+              styleBase.textUnderline,
+              styleColor.textWhite,
+              styleBase.FontSemiBold,
+            ]}>
             Privacy Policy
           </Typo>
         </Typo>
