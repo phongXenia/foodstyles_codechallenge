@@ -13,13 +13,7 @@ export const registerBuilder = (
       state.errorMessage = action.payload;
       state.isLoading = false;
     })
-    .addCase(AuthActions.registerWithEmail.fulfilled, (state, action) => {
+    .addCase(AuthActions.registerWithEmail.fulfilled, (state) => {
       state.isLoading = false;
-      if (action.payload) {
-        const { accessToken, refreshToken, user } = action.payload;
-        state.accessToken = accessToken;
-        state.refreshToken = refreshToken;
-        state.user = user;
-      }
     });
 };
