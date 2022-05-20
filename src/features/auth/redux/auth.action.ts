@@ -3,7 +3,7 @@ import {
   ILogInWithEmailResponse,
   RegisterPayload,
 } from '@app/src/features/auth/redux/auth.type';
-import { apolloCLient } from '@app/src/services/apollo';
+import { apolloCLient, ErrorType } from '@app/src/services/apollo';
 import {
   MUTATION_LOGIN_WITH_EMAIL,
   MUTATION_REGISTER_WITH_EMAIL,
@@ -45,7 +45,7 @@ export const AuthActions = {
         });
         return response.data?.loginWithEmail;
       } catch (error) {
-        rejectWithValue(error);
+        return rejectWithValue((error as ErrorType)?.message);
       }
     },
   ),

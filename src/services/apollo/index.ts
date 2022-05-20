@@ -45,3 +45,7 @@ export const apolloCLient = new ApolloClient({
   cache: new InMemoryCache(),
   link: from([errorLink, authLink, httpLink]),
 });
+
+export type ErrorType = {
+  message: string;
+};
