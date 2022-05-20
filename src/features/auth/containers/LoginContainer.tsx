@@ -15,6 +15,7 @@ import { AuthActions } from '@app/src/features/auth/redux/auth.action';
 import { ILoginWithEmailActionBody } from '@app/src/features/auth/redux/auth.type';
 import { authSelector } from '@app/src/features/auth/redux/auth.slice';
 import { Typo } from '@app/src/components/Typo';
+import AppHeader from '@app/src/components/AppHeader';
 
 const LoginContainer = () => {
   const schema = useMemo(
@@ -53,30 +54,33 @@ const LoginContainer = () => {
           colors={[COLOR_DEFAULT.ORANGISH, COLOR_DEFAULT.MAIZE]}
           start={{ x: 0, y: 0.5 }}
           end={{ x: 1, y: 0 }}
-          style={[styleBase.fillParent, styleBase.center, styleSize.px_38]}>
-          <FormProvider {...methods}>
-            <TextInput autoCapitalize="none" name="email" label="Email" />
-            <TextInput name="password" secureTextEntry label="Password" />
-            {!!errorMessage && (
-              <View
-                style={[
-                  styleSize.mt_14,
-                  styleColor.bgTomato,
-                  styleBase.borderButton,
-                  styleSize.px_9,
-                  styleSize.py_4,
-                ]}>
-                <Typo style={[styleBase.FontBold, styleColor.textWhite]}>
-                  {errorMessage}
-                </Typo>
-              </View>
-            )}
-            <Button
-              onPress={methods.handleSubmit(onSubmit)}
-              style={[styleSize.mt_14]}
-              label="LOG IN"
-            />
-          </FormProvider>
+          style={[styleBase.fillParent]}>
+          <AppHeader label="Log in" />
+          <View style={[styleBase.center, styleSize.px_38, styleSize.mt_18]}>
+            <FormProvider {...methods}>
+              <TextInput autoCapitalize="none" name="email" label="Email" />
+              <TextInput name="password" secureTextEntry label="Password" />
+              {!!errorMessage && (
+                <View
+                  style={[
+                    styleSize.mt_14,
+                    styleColor.bgTomato,
+                    styleBase.borderButton,
+                    styleSize.px_9,
+                    styleSize.py_4,
+                  ]}>
+                  <Typo style={[styleBase.FontBold, styleColor.textWhite]}>
+                    {errorMessage}
+                  </Typo>
+                </View>
+              )}
+              <Button
+                onPress={methods.handleSubmit(onSubmit)}
+                style={[styleSize.mt_14]}
+                label="LOG IN"
+              />
+            </FormProvider>
+          </View>
 
           <Button type="link" label="Forgot my password" />
         </LinearGradient>
