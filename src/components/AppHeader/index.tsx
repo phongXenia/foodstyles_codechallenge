@@ -12,7 +12,7 @@ const AppHeader: React.FC<{ label: string }> = ({ label }) => {
     <View
       style={[
         styleBase.row,
-        styleBase.safeTop,
+        styleBase.safeTopStatusBar,
         styleBase.alignCenter,
         styleBase.justifyBetween,
         styleSize.px_7,

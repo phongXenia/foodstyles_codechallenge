@@ -176,6 +176,9 @@ const styleBase = StyleSheet.create({
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
   },
+  roundedCorner4: {
+    borderRadius: 4,
+  },
   roundedCorner8: {
     borderRadius: 8,
   },

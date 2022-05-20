@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
 import styleBase from '@app/src/utils/styles/base';
 import { styleColor } from '@app/src/utils/styles/color';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -37,6 +37,22 @@ export const EditProfileContainer = () => {
   const onSubmit = (values: any) => {
     dispatch(AuthActions.updateUserProfile(values));
   };
+
+  const onLogout = () => {
+    Alert.alert('Do you want to logout?', '', [
+      {
+        text: 'Not now',
+        style: 'cancel',
+      },
+      {
+        text: 'OK',
+        onPress: () => {
+          dispatch(resetAuthState());
+        },
+      },
+    ]);
+  };
+
   return (
     <View
       style={[
@@ -67,6 +83,7 @@ export const EditProfileContainer = () => {
               styleSize.height35,
               styleSize.text16,
               styleSize.px_11,
+              styleBase.roundedCorner4,
             ]}
             name="name"
             label="Name shown on your shared cards"
@@ -81,6 +98,7 @@ export const EditProfileContainer = () => {
               styleSize.height35,
               styleSize.text16,
               styleSize.px_11,
+              styleBase.roundedCorner4,
             ]}
             name="email"
             label="Email"
@@ -107,11 +125,7 @@ export const EditProfileContainer = () => {
 
       <View
         style={[styleBase.alignCenter, styleBase.justifyEnd, styleBase.grow]}>
-        <Button
-          onPress={() => dispatch(resetAuthState())}
-          label="LOG OUT"
-          type="outlined"
-        />
+        <Button onPress={onLogout} label="LOG OUT" type="outlined" />
       </View>
 
       <View style={[styleBase.center, styleSize.mt_41]}>

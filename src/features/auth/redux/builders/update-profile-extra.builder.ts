@@ -16,7 +16,6 @@ export const updateProfileExtraBuilder = (
     })
     .addCase(AuthActions.updateUserProfile.fulfilled, (state, action) => {
       state.isLoading = false;
-      console.log('Action payload - ', action.payload);
       if (action.payload) {
         const { name, email } = action.payload;
         state.user = { ...state.user, name, email };
