@@ -1,9 +1,9 @@
-import {IAuthState} from '@app/src/features/auth/redux/auth.type';
-import {reducers} from '@app/src/redux/reducers';
+import { IAuthState } from '@app/src/features/auth/redux/auth.type';
+import { reducers } from '@app/src/redux/reducers';
 import AsyncStorage from '@react-native-community/async-storage';
-import {configureStore} from '@reduxjs/toolkit';
-import {PersistConfig, persistReducer} from 'redux-persist';
-import {PersistPartial} from 'redux-persist/es/persistReducer';
+import { configureStore } from '@reduxjs/toolkit';
+import { PersistConfig, persistReducer } from 'redux-persist';
+import { PersistPartial } from 'redux-persist/es/persistReducer';
 import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
 
 const persistConfig: PersistConfig<IReducerState> = {
@@ -25,6 +25,9 @@ export const store = configureStore({
   //   return getDefaultMiddleware({serializableCheck});
   // },
 });
+
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
 
 interface IReducerState {
   auth: IAuthState & PersistPartial;

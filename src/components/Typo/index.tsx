@@ -1,5 +1,5 @@
-import React, {FC, ReactNode} from 'react';
-import {Text, TextProps} from 'react-native';
+import React, { FC, ReactNode } from 'react';
+import { Text, TextProps } from 'react-native';
 import styleBase from '@app/src/utils/styles/base';
 
 type Props = {

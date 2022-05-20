@@ -1,7 +1,10 @@
 import React from 'react';
-import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from '@react-navigation/stack';
 
-import {STACK_SCREENS} from '@app/src/navigation/StackScreens';
+import { STACK_SCREENS } from '@app/src/navigation/StackScreens';
 
 const Stack = createStackNavigator();
 
@@ -13,8 +16,8 @@ export const StackNavigator = () => {
         headerShown: false,
         ...TransitionPresets.SlideFromRightIOS,
       }}>
-      {STACK_SCREENS.map((screen, index) => {
-        return <Stack.Screen key={`STACK_SCREEN_${index}`} {...screen} />;
+      {STACK_SCREENS.map((screen) => {
+        return <Stack.Screen key={screen.name} {...screen} />;
       })}
     </Stack.Navigator>
   );
