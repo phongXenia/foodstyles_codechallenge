@@ -1,4 +1,5 @@
 import {
+  ILoginWithEmailActionBody,
   ILogInWithEmailResponse,
   RegisterPayload,
 } from '@app/src/features/auth/redux/auth.type';
@@ -34,16 +35,13 @@ export const AuthActions = {
   ),
   loginWithEmail: createAsyncThunk(
     'auth/loginWithEmail',
-    async (body: any, { rejectWithValue }) => {
+    async (body: ILoginWithEmailActionBody, { rejectWithValue }) => {
       try {
         const response = await apolloCLient.mutate<{
           loginWithEmail: ILogInWithEmailResponse;
         }>({
           mutation: MUTATION_LOGIN_WITH_EMAIL,
-          variables: {
-            email: 'phong.nguyen@xenia.tech',
-            password: 'iloveXenia123!@#',
-          },
+          variables: body,
         });
         return response.data?.loginWithEmail;
       } catch (error) {

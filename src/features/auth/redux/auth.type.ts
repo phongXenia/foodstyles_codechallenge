@@ -3,6 +3,7 @@ export interface IAuthState {
   isLoading: boolean;
   accessToken: string;
   refreshToken: string;
+  errorMessage: string;
 }
 
 export interface ILoggedInUserPayloadAction {
@@ -23,6 +24,11 @@ export interface ILogInWithEmailResponse {
 
 export interface RegisterPayload {
   name: string;
+  email: string;
+  password: string;
+}
+
+export interface ILoginWithEmailActionBody {
   email: string;
   password: string;
 }
