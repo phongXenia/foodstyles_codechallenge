@@ -4,12 +4,19 @@ import styleBase from '@app/src/utils/styles/base';
 import { styleSize } from '@app/src/utils/styles/size';
 import { Typo } from '@app/src/components/Typo';
 import { LoginOptionButton } from '@app/src/features/auth/components/LoginOptionButton';
-import { styleColor } from '@app/src/utils/styles/color';
+import { COLOR_DEFAULT, styleColor } from '@app/src/utils/styles/color';
+import LinearGradient from 'react-native-linear-gradient';
 
 export const LoginOptionContainer = () => {
   return (
     <View
       style={[styleBase.container, styleBase.safeTop, styleBase.safeBottom]}>
+      <LinearGradient
+        colors={[COLOR_DEFAULT.ORANGISH, COLOR_DEFAULT.MAIZE]}
+        start={{ x: 0, y: 0.5 }}
+        end={{ x: 1, y: 0 }}
+        style={[styleBase.fillParent]}
+      />
       <View style={[styleSize.mt_93, styleSize.mx_152]}>
         <Image source={require('@app/src/assets/images/foodstyleslogo.png')} />
       </View>
@@ -48,7 +55,14 @@ export const LoginOptionContainer = () => {
       <View
         style={[styleBase.container, styleBase.justifyEnd, styleSize.mx_32]}>
         <Typo styles={[styleBase.textCenter, styleColor.textWhite]}>
-          By signing in you accept the General Terms and Privacy Policy
+          By signing in you accept the{' '}
+          <Typo styles={[styleBase.textUnderline, styleColor.textWhite]}>
+            General Terms
+          </Typo>{' '}
+          and{' '}
+          <Typo styles={[styleBase.textUnderline, styleColor.textWhite]}>
+            Privacy Policy
+          </Typo>
         </Typo>
       </View>
     </View>

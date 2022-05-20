@@ -3,15 +3,14 @@ import {
   createStackNavigator,
   TransitionPresets,
 } from '@react-navigation/stack';
-
-import { STACK_SCREENS } from '@app/src/navigation/StackScreens';
+import { SCREEN_NAME, STACK_SCREENS } from '@app/src/navigation/StackScreens';
 
 const Stack = createStackNavigator();
 
 export const StackNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="LoginOptionScreen"
+      initialRouteName={SCREEN_NAME.LOGIN_OPTION}
       screenOptions={{
         headerShown: false,
         ...TransitionPresets.SlideFromRightIOS,
