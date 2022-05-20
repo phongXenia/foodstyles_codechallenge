@@ -14,6 +14,7 @@ import { styleColor } from '@app/src/utils/styles/color';
 import { Typo } from '@app/src/components/Typo';
 import { authSelector } from '@app/src/features/auth/redux/auth.slice';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import AppHeader from '@app/src/components/AppHeader';
 
 export const RegisterContainer = () => {
   const dispatch = useAppDispatch();
@@ -36,9 +37,9 @@ export const RegisterContainer = () => {
   };
 
   return (
-    <KeyboardAwareScrollView
-      contentContainerStyle={[styleBase.container, styleBase.safeTop]}>
+    <KeyboardAwareScrollView contentContainerStyle={[styleBase.container]}>
       <GradientBackground />
+      <AppHeader label="Sign up with Email" />
       <View style={[styleSize.px_38, styleBase.center, styleSize.mt_27]}>
         <FormProvider {...methods}>
           <TextInput name="name" label="Your name" />
