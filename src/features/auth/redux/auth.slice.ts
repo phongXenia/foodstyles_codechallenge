@@ -1,3 +1,4 @@
+import { AuthActions } from '@app/src/features/auth/redux/auth.action';
 import {
   IAuthState,
   ILoggedInUserPayloadAction,
@@ -24,6 +25,24 @@ const authSlice = createSlice({
       state.refreshToken = refreshToken;
       state.user = user;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(AuthActions.loginWithEmail.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(AuthActions.loginWithEmail.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(AuthActions.loginWithEmail.fulfilled, (state, action) => {
+        state.isLoading = false;
+        if (action.payload) {
+          const { accessToken, refreshToken, user } = action.payload;
+          state.accessToken = accessToken;
+          state.refreshToken = refreshToken;
+          state.user = user;
+        }
+      });
   },
 });
 

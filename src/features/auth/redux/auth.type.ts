@@ -10,3 +10,13 @@ export interface ILoggedInUserPayloadAction {
   accessToken: string;
   refreshToken: string;
 }
+
+export interface ILogInWithEmailResponse {
+  accessToken: string;
+  refreshToken: string;
+  user: {
+    id: string;
+    name: string;
+    email: string;
+  };
+}

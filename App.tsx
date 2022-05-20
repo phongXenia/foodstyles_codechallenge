@@ -14,14 +14,18 @@ import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { StackNavigator } from '@app/src/navigation/StackNavigator';
 import { navigationRef } from '@app/src/utils/navigation';
+import { Provider } from 'react-redux';
+import { store } from '@app/src/redux/store';
 
 const App = () => {
   return (
-    <ApolloProvider client={apolloCLient}>
-      <NavigationContainer ref={navigationRef}>
-        <StackNavigator />
-      </NavigationContainer>
-    </ApolloProvider>
+    <Provider store={store}>
+      <ApolloProvider client={apolloCLient}>
+        <NavigationContainer ref={navigationRef}>
+          <StackNavigator />
+        </NavigationContainer>
+      </ApolloProvider>
+    </Provider>
   );
 };
 

@@ -17,7 +17,7 @@ export const StackNavigator = () => {
         ...TransitionPresets.SlideFromRightIOS,
       }}>
       {STACK_SCREENS.map((screen) => {
-        return <Stack.Screen {...screen} />;
+        return <Stack.Screen key={screen.name} {...screen} />;
       })}
     </Stack.Navigator>
   );
