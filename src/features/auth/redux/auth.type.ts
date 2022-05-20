@@ -20,3 +20,8 @@ export interface ILogInWithEmailResponse {
     email: string;
   };
 }
+
+export interface ILoginWithEmailActionBody {
+  email: string;
+  password: string;
+}
