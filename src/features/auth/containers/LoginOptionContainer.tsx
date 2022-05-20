@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Image} from 'react-native';
+import { View, Image } from 'react-native';
 import styleBase from '@app/src/utils/styles/base';
-import {styleSize} from '@app/src/utils/styles/size';
-import {Typo} from '@app/src/components/Typo';
+import { styleSize } from '@app/src/utils/styles/size';
+import { Typo } from '@app/src/components/Typo';
 
 export const LoginOptionContainer = () => {
   return (

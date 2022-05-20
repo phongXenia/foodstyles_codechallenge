@@ -8,12 +8,12 @@
  * @format
  */
 
-import {ApolloProvider} from '@apollo/react-hooks';
-import {apolloCLient} from '@app/src/services/apollo';
-import {NavigationContainer} from '@react-navigation/native';
+import { ApolloProvider } from '@apollo/react-hooks';
+import { apolloCLient } from '@app/src/services/apollo';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import {StackNavigator} from '@app/src/navigation/StackNavigator';
-import {navigationRef} from '@app/src/utils/navigation';
+import { StackNavigator } from '@app/src/navigation/StackNavigator';
+import { navigationRef } from '@app/src/utils/navigation';
 
 const App = () => {
   return (
