@@ -9,12 +9,14 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 type Props = {
   style?: StyleProp<ViewStyle>;
   label: string;
+  disabled?: boolean;
   onPress?: () => void;
   type?: 'outlined' | 'link' | 'primary';
 };
 const Button: React.FC<Props> = ({
   style,
   label,
+  disabled = false,
   onPress,
   type = 'primary',
 }) => {

@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const COLOR_DEFAULT = {
   WHITE: '#fff',
+  WHITE_TWO: 'rgb(248,248,248)',
   WHITE_THREE: '#d9d9d9',
   BLACK: '#000',
   ORANGISH: 'rgb(250,119,69)',
@@ -12,6 +13,9 @@ export const COLOR_DEFAULT = {
 export const styleColor = StyleSheet.create({
   bgWhite: {
     backgroundColor: COLOR_DEFAULT.WHITE,
+  },
+  bgWhiteTwo: {
+    backgroundColor: COLOR_DEFAULT.WHITE_TWO,
   },
   bgAquaGreen: {
     backgroundColor: COLOR_DEFAULT.AQUA_GREEN,

@@ -28,8 +28,8 @@ export const AuthActions = {
         });
 
         return response.data?.signUpWithEmail;
-      } catch (error) {
-        rejectWithValue(error);
+      } catch (error: any) {
+        return rejectWithValue(error.message);
       }
     },
   ),
