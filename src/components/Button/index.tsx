@@ -10,9 +10,14 @@ type Props = {
   style?: StyleProp<ViewStyle>;
   label: string;
   onPress?: () => void;
-  type: 'outlined' | 'link';
+  type?: 'outlined' | 'link' | 'primary';
 };
-const Button: React.FC<Props> = ({ style, label, onPress, type = 'link' }) => {
+const Button: React.FC<Props> = ({
+  style,
+  label,
+  onPress,
+  type = 'primary',
+}) => {
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -22,7 +27,7 @@ const Button: React.FC<Props> = ({ style, label, onPress, type = 'link' }) => {
         styleSize.px_43,
         styleBase.roundCornerButton,
         type === 'outlined' && styleColor.borderWhiteThree,
-        type === 'link' && styleColor.bgAquaGreen,
+        type === 'primary' && styleColor.bgAquaGreen,
         styleBase.center,
         style,
       ]}>

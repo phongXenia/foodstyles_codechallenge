@@ -10,12 +10,16 @@ const initialState: IAuthState = {
   user: null,
   accessToken: '',
   refreshToken: '',
+  errorMessage: '',
 };
 
 const authSlice = createSlice({
   name: 'AuthSlice',
   initialState,
   reducers: {
+    setErrorMessage: (state, action: PayloadAction<string>) => {
+      state.errorMessage = action.payload;
+    },
     setIsLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
     },
