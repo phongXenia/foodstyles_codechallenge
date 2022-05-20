@@ -30,3 +30,13 @@ export const MUTATION_REGISTER_WITH_EMAIL = gql`
     }
   }
 `;
+
+export const MUTATION_UPDATE_USER_PROFILE = gql`
+  mutation UpdateUserProfile($name: NonEmptyString!, $email: EmailAddress!) {
+    updateUser(name: $name, email: $email) {
+      id
+      name
+      email
+    }
+  }
+`;

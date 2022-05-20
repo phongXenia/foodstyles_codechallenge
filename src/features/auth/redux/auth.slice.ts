@@ -7,6 +7,7 @@ import {
 import { RootState } from '@app/src/redux/store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { registerBuilder } from '@app/src/features/auth/redux/builders/register-extra.builder';
+import { updateProfileExtraBuilder } from '@app/src/features/auth/redux/builders/update-profile-extra.builder';
 
 const initialState: IAuthState = {
   isLoading: false,
@@ -42,6 +43,7 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     registerBuilder(builder);
+    updateProfileExtraBuilder(builder);
 
     builder
       .addCase(AuthActions.loginWithEmail.pending, (state) => {

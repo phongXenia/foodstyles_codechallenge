@@ -1,20 +1,20 @@
-import React, {useMemo} from 'react';
-import {View} from 'react-native';
+import React, { useMemo } from 'react';
+import { View } from 'react-native';
 import styleBase from '@app/src/utils/styles/base';
 import { styleColor } from '@app/src/utils/styles/color';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {styleColor} from '@app/src/utils/styles/color';
-import {FormProvider, useForm} from 'react-hook-form';
-import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useAppDispatch, useAppSelector } from '@app/src/hooks/reduxCustomHook';
-import {useAppSelector} from '@app/src/hooks/reduxCustomHook';
 import TextInput from '@app/src/components/TextInput';
 import Button from '@app/src/components/Button';
-import { resetAuthState } from '@app/src/features/auth/redux/auth.slice';
-import {Typo} from '@app/src/components/Typo';
-import {styleSize} from '@app/src/utils/styles/size';
+import {
+  authSelector,
+  resetAuthState,
+} from '@app/src/features/auth/redux/auth.slice';
+import { Typo } from '@app/src/components/Typo';
+import { styleSize } from '@app/src/utils/styles/size';
+import { AuthActions } from '@app/src/features/auth/redux/auth.action';
 
 export const EditProfileContainer = () => {
   const user = useAppSelector((state) => state.auth.user);
@@ -32,10 +32,19 @@ export const EditProfileContainer = () => {
       email: user?.email || '',
     },
   });
+  const { errorMessage } = useAppSelector(authSelector);
   const dispatch = useAppDispatch();
+  const onSubmit = (values: any) => {
+    dispatch(AuthActions.updateUserProfile(values));
+  };
   return (
     <View
-      style={[styleBase.container, styleColor.bgWhiteTwo, styleBase.safeTop]}>
+      style={[
+        styleBase.container,
+        styleColor.bgWhiteTwo,
+        styleBase.safeTop,
+        styleBase.safeBottom,
+      ]}>
       <View style={[styleSize.px_18]}>
         <Typo
           style={[
@@ -47,7 +56,7 @@ export const EditProfileContainer = () => {
         </Typo>
       </View>
 
-      <View style={[styleSize.px_18]}>
+      <View style={[styleSize.px_18, styleSize.mt_18]}>
         <FormProvider {...methods}>
           <TextInput
             labelStyle={[styleColor.textGreyishBrown]}
@@ -77,14 +86,40 @@ export const EditProfileContainer = () => {
             label="Email"
           />
         </FormProvider>
-        <View
-            style={[styleBase.alignCenter, styleBase.justifyEnd, styleBase.grow]}>
-          <Button
-              onPress={() => dispatch(resetAuthState())}
-              label="LOG OUT"
-              type="outlined"
-          />
+
+        <View style={[styleBase.center]}>
+          {!!errorMessage && (
+            <View
+              style={[
+                styleSize.mt_14,
+                styleColor.bgTomato,
+                styleBase.borderButton,
+                styleSize.px_9,
+                styleSize.py_4,
+              ]}>
+              <Typo style={[styleBase.FontBold, styleColor.textWhite]}>
+                {errorMessage}
+              </Typo>
+            </View>
+          )}
         </View>
+      </View>
+
+      <View
+        style={[styleBase.alignCenter, styleBase.justifyEnd, styleBase.grow]}>
+        <Button
+          onPress={() => dispatch(resetAuthState())}
+          label="LOG OUT"
+          type="outlined"
+        />
+      </View>
+
+      <View style={[styleBase.center, styleSize.mt_41]}>
+        <Button
+          onPress={methods.handleSubmit(onSubmit)}
+          style={[styleSize.mt_14]}
+          label="DONE"
+        />
       </View>
     </View>
   );

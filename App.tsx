@@ -17,6 +17,7 @@ import { navigationRef } from '@app/src/utils/navigation';
 import { Provider } from 'react-redux';
 import { persistor, store } from '@app/src/redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
+import FlashMessage from 'react-native-flash-message';
 
 const App = () => {
   return (
@@ -26,6 +27,8 @@ const App = () => {
           <PersistGate persistor={persistor}>
             <StackNavigator />
           </PersistGate>
+
+          <FlashMessage position="top" />
         </NavigationContainer>
       </ApolloProvider>
     </Provider>
