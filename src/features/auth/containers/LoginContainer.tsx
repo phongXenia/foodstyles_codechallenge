@@ -1,6 +1,6 @@
 import styleBase from '@app/src/utils/styles/base';
 import { COLOR_DEFAULT, styleColor } from '@app/src/utils/styles/color';
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { View } from 'react-native';
@@ -59,7 +59,7 @@ const LoginContainer = () => {
           <View style={[styleBase.center, styleSize.px_38, styleSize.mt_18]}>
             <FormProvider {...methods}>
               <TextInput autoCapitalize="none" name="email" label="Email" />
-              <TextInput name="password" secureTextEntry label="Password" />
+              <TextInput secureTextEntry name="password" label="Password" />
               {!!errorMessage && (
                 <View
                   style={[

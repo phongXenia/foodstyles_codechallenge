@@ -6,7 +6,7 @@ import persistReducer from 'redux-persist/es/persistReducer';
 const authPersistConfig = {
   key: 'auth',
   storage: AsyncStorage,
-  blacklist: ['somethingTemporary'],
+  blacklist: ['isLoading'],
 };
 
 export const reducers = combineReducers({
