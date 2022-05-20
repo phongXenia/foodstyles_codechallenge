@@ -1,48 +1,69 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { Image, TouchableOpacity, View } from 'react-native';
 import styleBase from '@app/src/utils/styles/base';
 import { styleSize } from '@app/src/utils/styles/size';
 import { Typo } from '@app/src/components/Typo';
 import { LoginOptionButton } from '@app/src/features/auth/components/LoginOptionButton';
-import { COLOR_DEFAULT, styleColor } from '@app/src/utils/styles/color';
-import LinearGradient from 'react-native-linear-gradient';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { styleColor } from '@app/src/utils/styles/color';
 import { navigate } from '@app/src/utils/navigation';
 import { SCREEN_NAME } from '@app/src/navigation/StackScreens';
+import { GradientBackground } from '@app/src/components/GradientBackground';
 
 export const LoginOptionContainer = () => {
   return (
     <View
       style={[styleBase.container, styleBase.safeTop, styleBase.safeBottom]}>
-      <LinearGradient
-        colors={[COLOR_DEFAULT.ORANGISH, COLOR_DEFAULT.MAIZE]}
-        start={{ x: 0, y: 0.5 }}
-        end={{ x: 1, y: 0 }}
-        style={[styleBase.fillParent]}
-      />
-      <View style={[styleSize.mt_93, styleSize.mx_152]}>
+      <GradientBackground />
+      <View style={[styleSize.mt_93, styleSize.mx_152, styleBase.center]}>
         <Image source={require('@app/src/assets/images/foodstyleslogo.png')} />
       </View>
 
-      <Typo>Sign in to be able to save your preferences and settings.</Typo>
+      <Typo
+        styles={[
+          styleSize.mt_30,
+          styleSize.text18,
+          styleSize.lh22,
+          styleBase.textCenter,
+          styleSize.px_38,
+          styleColor.textWhite,
+        ]}>
+        Sign in to be able to save your preferences and settings.
+      </Typo>
 
-      <View style={[styleBase.center]}>
+      <View style={[styleBase.center, styleSize.mt_30]}>
         <View style={[styleSize.mt_15]}>
-          <LoginOptionButton onPress={() => {}} title="Sign in with Apple" />
+          <LoginOptionButton
+            icon={require('@app/src/assets/images/appleicon.png')}
+            onPress={() => {}}
+            title="Sign in with Apple"
+          />
         </View>
         <View style={[styleSize.mt_15]}>
-          <LoginOptionButton onPress={() => {}} title="Sign in with Facebook" />
+          <LoginOptionButton
+            icon={require('@app/src/assets/images/facebookicon.png')}
+            onPress={() => {}}
+            title="Sign in with Facebook"
+          />
         </View>
         <View style={[styleSize.mt_15]}>
-          <LoginOptionButton onPress={() => {}} title="Sign in with Google" />
+          <LoginOptionButton
+            icon={require('@app/src/assets/images/googleicon.png')}
+            onPress={() => {}}
+            title="Sign in with Google"
+          />
         </View>
         <View style={[styleSize.mt_15]}>
-          <LoginOptionButton onPress={() => {}} title="Sign up with Email" />
+          <LoginOptionButton
+            onPress={() => navigate(SCREEN_NAME.REGISTER)}
+            title="Sign up with Email"
+          />
         </View>
       </View>
 
       <View style={[styleBase.center, styleSize.mt_20]}>
-        <TouchableOpacity onPress={() => navigate(SCREEN_NAME.LOGIN)}>
+        <TouchableOpacity
+          onPress={() => navigate(SCREEN_NAME.LOGIN)}
+          hitSlop={{ bottom: 20, left: 20, right: 20, top: 20 }}>
           <Typo
             styles={[styleColor.textWhite, styleSize.text16, styleSize.lh18]}>
             Login with Email
@@ -62,7 +83,6 @@ export const LoginOptionContainer = () => {
           </Typo>
         </Typo>
       </View>
-      <View style={[styleBase.center, styleSize.mt_20]} />
     </View>
   );
 };

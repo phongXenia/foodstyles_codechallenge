@@ -13,7 +13,7 @@ import { styleColor } from '@app/src/utils/styles/color';
 
 type Props = {
   title: string;
-  onPress: () => void;
+  onPress?: () => void;
   icon?: ImageSourcePropType;
   iconStyle?: StyleProp<ImageStyle>;
 };

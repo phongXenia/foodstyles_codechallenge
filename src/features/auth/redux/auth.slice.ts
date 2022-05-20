@@ -4,6 +4,7 @@ import {
   ILoggedInUserPayloadAction,
 } from '@app/src/features/auth/redux/auth.type';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { registerBuilder } from '@app/src/features/auth/redux/builders/register-extra.builder';
 
 const initialState: IAuthState = {
   isLoading: false,
@@ -27,6 +28,8 @@ const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    registerBuilder(builder);
+
     builder
       .addCase(AuthActions.loginWithEmail.pending, (state) => {
         state.isLoading = true;
