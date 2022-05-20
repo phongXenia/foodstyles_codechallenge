@@ -6,9 +6,11 @@ import {Typo} from '@app/src/components/Typo';
 
 export const LoginOptionContainer = () => {
   return (
-    <View style={[styleBase.container]}>
+    <View style={[styleBase.container, {backgroundColor: 'green'}]}>
       <View style={[styleSize.mt_93, styleSize.mx_152]}>
-        <Image source={require('../../../assets/images/foodstyleslogo.png')} />
+        <Image
+          source={require('../../../assets/images/foodstyleslogo@2x.png')}
+        />
       </View>
 
       <Typo>Sign in to be able to save your preferences and settings.</Typo>
