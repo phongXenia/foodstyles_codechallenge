@@ -26,6 +26,9 @@ export const styleColor = StyleSheet.create({
   bgAquaGreen: {
     backgroundColor: COLOR_DEFAULT.AQUA_GREEN,
   },
+  textGreyIshBrown: {
+    color: COLOR_DEFAULT.GREYISHBROWN,
+  },
   bgSecondary: {
     backgroundColor: COLOR_DEFAULT.SECONDARY,
   },

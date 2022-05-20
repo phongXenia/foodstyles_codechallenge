@@ -10,7 +10,11 @@ import { registerBuilder } from '@app/src/features/auth/redux/builders/register-
 
 const initialState: IAuthState = {
   isLoading: false,
-  user: null,
+  user: {
+    email: '',
+    id: '',
+    name: '',
+  },
   accessToken: '',
   refreshToken: '',
   errorMessage: '',
@@ -20,6 +24,9 @@ const authSlice = createSlice({
   name: 'AuthSlice',
   initialState,
   reducers: {
+    resetAuthState: () => {
+      return initialState;
+    },
     setErrorMessage: (state, action: PayloadAction<string>) => {
       state.errorMessage = action.payload;
     },
@@ -56,6 +63,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { setIsLoading, setErrorMessage } = authSlice.actions;
+export const { setIsLoading, setErrorMessage, resetAuthState } =
+  authSlice.actions;
 export default authSlice.reducer;
 export const authSelector = (state: RootState) => state.auth;

@@ -62,6 +62,7 @@ const TextInput: React.FC<
       <RNTextInput
         style={[styles.input, styleBase.borderButton]}
         {...props}
+        autoCorrect={false}
         onChangeText={onChange}
         onBlur={onBlur}
         value={value}

@@ -1,5 +1,9 @@
 export interface IAuthState {
-  user: any;
+  user: {
+    id: string;
+    name: string;
+    email: string;
+  };
   isLoading: boolean;
   accessToken: string;
   refreshToken: string;

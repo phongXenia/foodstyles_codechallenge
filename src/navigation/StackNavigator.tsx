@@ -15,7 +15,7 @@ const Stack = createStackNavigator();
 
 export const StackNavigator = () => {
   const { user } = useAppSelector(authSelector);
-  const screenList = user ? PRIVATE_STACK_SCREENS : PUBLIC_STACK_SCREENS;
+  const screenList = user.id ? PRIVATE_STACK_SCREENS : PUBLIC_STACK_SCREENS;
 
   return (
     <Stack.Navigator

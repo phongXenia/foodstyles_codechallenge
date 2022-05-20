@@ -15,14 +15,17 @@ import React from 'react';
 import { StackNavigator } from '@app/src/navigation/StackNavigator';
 import { navigationRef } from '@app/src/utils/navigation';
 import { Provider } from 'react-redux';
-import { store } from '@app/src/redux/store';
+import { persistor, store } from '@app/src/redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const App = () => {
   return (
     <Provider store={store}>
       <ApolloProvider client={apolloCLient}>
         <NavigationContainer ref={navigationRef}>
-          <StackNavigator />
+          <PersistGate persistor={persistor}>
+            <StackNavigator />
+          </PersistGate>
         </NavigationContainer>
       </ApolloProvider>
     </Provider>

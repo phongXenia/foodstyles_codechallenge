@@ -43,7 +43,7 @@ const Button: React.FC<Props> = ({
           style={[
             styleBase.FontBold,
             type === 'outlined'
-              ? styleColor.textThreeWhite
+              ? styleColor.textGreyIshBrown
               : styleColor.textWhite,
           ]}>
           {label}
