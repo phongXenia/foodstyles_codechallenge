@@ -9,6 +9,7 @@ export const COLOR_DEFAULT = {
   ORANGISH: 'rgb(250,119,69)',
   MAIZE: 'rgb(243,196,66)',
   AQUA_GREEN: '#11ce90',
+  GREYISHBROWN: 'rgb(67,67,67)',
 };
 
 export const styleColor = StyleSheet.create({
@@ -23,6 +24,9 @@ export const styleColor = StyleSheet.create({
   },
   bgAquaGreen: {
     backgroundColor: COLOR_DEFAULT.AQUA_GREEN,
+  },
+  textGreyIshBrown: {
+    color: COLOR_DEFAULT.GREYISHBROWN,
   },
   textWhite: {
     color: COLOR_DEFAULT.WHITE,
